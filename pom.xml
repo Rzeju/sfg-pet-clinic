@@ -35,19 +35,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-release-plugin</artifactId>
-                <configuration>
-                    <goals>install</goals>
-                </configuration>
-            </plugin>
         </plugins>
     </build>
-
-    <scm>
-        <developerConnection>scm:git:github.com/Rzeju/sfg-pet-clinic.git</developerConnection>
-      <tag>sfg-pet-clinic-0.0.1</tag>
-  </scm>
-
 </project>

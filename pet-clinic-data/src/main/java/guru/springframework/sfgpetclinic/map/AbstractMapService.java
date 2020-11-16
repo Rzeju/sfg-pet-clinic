@@ -4,7 +4,7 @@ import guru.springframework.sfgpetclinic.model.BaseEntity;
 
 import java.util.*;
 
-public class AbstractMapService<T extends BaseEntity, ID extends Long> {
+public class AbstractMapService<T extends BaseEntity, ID extends Long>  {
 
     protected Map<Long, T> map = new HashMap<>();
 

@@ -1,18 +1,18 @@
 package guru.springframework.sfgpetclinic.model;
 
-import jdk.vm.ci.meta.Local;
+import java.time.LocalDate;
 
 public class Visit extends BaseEntity {
 
-    private Local date;
+    private LocalDate date;
     private String description;
     private Pet pet;
 
-    public Local getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Local date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

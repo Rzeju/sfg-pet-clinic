@@ -2,10 +2,7 @@ package guru.springframework.sfgpetclinic.bootstrap;
 
 
 import guru.springframework.sfgpetclinic.model.*;
-import guru.springframework.sfgpetclinic.services.OwnerService;
-import guru.springframework.sfgpetclinic.services.PetTypeService;
-import guru.springframework.sfgpetclinic.services.SpecialityService;
-import guru.springframework.sfgpetclinic.services.VetService;
+import guru.springframework.sfgpetclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -18,12 +15,14 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -79,7 +78,6 @@ public class DataLoader implements CommandLineRunner {
         owner2.setAddress("789 EvenStreet");
         owner2.setCity("Miami");
         owner2.setTelephone("4564564567");
-        ownerService.save(owner2);
 
         Pet mikesPet = new Pet();
         mikesPet.setPetType(savedCatPetType);
@@ -88,6 +86,8 @@ public class DataLoader implements CommandLineRunner {
         mikesPet.setName("Bianca");
         owner2.getPets().add(mikesPet);
 
+        ownerService.save(owner2);
+
         Owner owner3 = new Owner();
         owner3.setFirstName("Kyle");
         owner3.setAddress("South Park Street");
@@ -95,7 +95,14 @@ public class DataLoader implements CommandLineRunner {
         owner3.setTelephone("171717420");
         owner3.setLastName("Broflowsky");
 
+        Visit catVisit = new Visit();
+        catVisit.setPet(mikesPet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sneezy Kitty");
+
         ownerService.save(owner3);
+
+        visitService.save(catVisit);
 
         System.out.println("Loaded Owners...");
 

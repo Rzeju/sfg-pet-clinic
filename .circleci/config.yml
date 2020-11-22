@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build:
     docker:
-      - image: circle/openjdk:8
+      - image: circle/openjdk:11
 
     working_directory: ~/repo
 
